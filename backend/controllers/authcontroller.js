@@ -37,8 +37,8 @@ const profilePic = gender === "male" ? boyProfilePic : girlProfilePic;
 
 		if (newUser) {
 			// Generate JWT token here
-			generateTokenAndSetCookie(newUser._id, res);
-			await newUser.save();
+		await newUser.save();
+generateTokenAndSetCookie(newUser._id, res);
 
 			res.status(201).json({
 				_id: newUser._id,
