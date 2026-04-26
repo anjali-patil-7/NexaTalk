@@ -44,6 +44,11 @@ app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
+app.get("/", (req, res) => {
+  res.send("NexaTalk API is running 🚀");
+});
+
+
 // ── Handle port conflict
 server.on("error", (err) => {
   if (err.code === "EADDRINUSE") {
