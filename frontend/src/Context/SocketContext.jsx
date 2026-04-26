@@ -15,10 +15,14 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) {
-			const socket = io("http://localhost:5000", {
+			const base =
+				import.meta.env.VITE_API_URL ||
+				(import.meta.env.DEV ? "http://localhost:5000" : window.location.origin);
+			const socket = io(base, {
 				query: {
 					userId: authUser._id,
 				},
+				withCredentials: true,
 			});
 
 			setSocket(socket);
