@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { TiMessages } from "react-icons/ti";
-import { useAuthContext } from "../../context/AuthContext";
-import { useSocketContext } from "../../context/SocketContext";
+import { useAuthContext } from "../../Context/AuthContext";
+import { useSocketContext } from "../../Context/SocketContext";
 import useConversation from "../../Zustand/useConversation";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";

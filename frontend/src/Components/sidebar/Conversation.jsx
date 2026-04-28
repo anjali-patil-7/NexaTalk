@@ -1,4 +1,4 @@
-import { useSocketContext } from "../../context/SocketContext";
+import { useSocketContext } from "../../Context/SocketContext";
 import useConversation from "../../Zustand/useConversation";
 
 const Conversation = ({ conversation }) => {

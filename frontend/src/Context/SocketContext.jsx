@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { useAuthContext } from "../Context/AuthContext";
-import io from "socket.io-client";
+import { io } from "socket.io-client";
+import { API } from "../utils/api";
 
 const SocketContext = createContext();
 
@@ -15,10 +16,7 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) {
-			const base =
-				import.meta.env.VITE_API_URL ||
-				(import.meta.env.DEV ? "http://localhost:5000" : window.location.origin);
-			const socket = io(base, {
+			const socket = io(API, {
 				query: {
 					userId: authUser._id,
 				},
