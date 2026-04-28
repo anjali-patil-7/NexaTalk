@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { TiMessages } from "react-icons/ti";
-import useGetMessages from "../../hooks/useGetMessages";
-import useListenMessages from "../../hooks/useListenMessages";
+import useGetMessages from "../../Hooks/useGetMessages";
+import useListenMessages from "../../Hooks/useListenMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 
