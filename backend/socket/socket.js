@@ -1,7 +1,17 @@
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
 import resolveCorsOrigins from "../utils/resolveCorsOrigins.js";
+
+// Load env vars BEFORE calling resolveCorsOrigins().
+// In ESM, this module's top-level code runs before server.js's dotenv.config(),
+// so we must load it here too. On Render, OS-level vars make this a safe no-op.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 const app = express();
 const server = http.createServer(app);

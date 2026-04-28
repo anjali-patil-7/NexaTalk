@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import User from "../models/usermodel.js";
-import generateTokenAndSetCookie from "../utils/generateToken.js";
+import generateTokenAndSetCookie, { COOKIE_OPTIONS } from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
 	try {
@@ -81,7 +81,9 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
 	try {
-		res.cookie("jwt", "", { maxAge: 0 });
+		// Must use the same sameSite/secure flags as when the cookie was SET,
+		// otherwise cross-origin browsers will ignore the clear instruction.
+		res.cookie("jwt", "", { ...COOKIE_OPTIONS, maxAge: 0 });
 		res.status(200).json({ message: "Logged out successfully" });
 	} catch (error) {
 		console.log("Error in logout controller", error.message);
